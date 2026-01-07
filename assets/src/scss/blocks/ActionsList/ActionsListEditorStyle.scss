@@ -7,9 +7,23 @@
     display: none !important;
   }
 
+  /* 
+   Fix: the carousel wrapper stacks items vertically because it is flex-column.
+   Force it to grid on tablet+ so items appear in rows.
+  */
+  @include medium-and-up {
+    .carousel-item-wrapper,
+    .wp-block-post-template {
+      display: grid;
+      gap: $sp-2;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
   @include large-and-up {
-    .wp-block-post {
-      flex-basis: calc((100% / 3) - $sp-2);
+    .carousel-item-wrapper,
+    .wp-block-post-template {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 }
